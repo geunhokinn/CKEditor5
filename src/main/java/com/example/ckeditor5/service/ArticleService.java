@@ -51,4 +51,13 @@ public class ArticleService {
 
         articleRepository.delete(article);
     }
+
+    @Transactional
+    public void updateArticle(SaveDTO saveDTO, Long id) {
+
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("게시글을 조회할 수 없습니다."));
+
+        article.assignArticle(saveDTO.getTitle(), saveDTO.getContent());
+    }
 }
