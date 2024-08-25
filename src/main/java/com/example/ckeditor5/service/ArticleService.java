@@ -34,4 +34,12 @@ public class ArticleService {
                 .map(InfoDTO::fromEntity)
                 .collect(Collectors.toList());
     }
+
+    public InfoDTO getArticle(Long id) {
+
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("게시글을 조회할 수 없습니다."));
+
+        return InfoDTO.fromEntity(article);
+    }
 }
