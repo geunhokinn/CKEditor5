@@ -10,9 +10,9 @@
 </head>
 <body>
 editor
-<form action="/save" method="post">
-    <input name="title" type="text" placeholder="제목">
-    <textarea name="content" id="content"></textarea>
+<form action="/save{{#Article}}/{{Article.id}}{{/Article}}" method="post">
+    <input name="title" {{#Article}}value="{{Article.title}}"{{/Article}} type="text" placeholder="제목">
+    <textarea name="content" id="content">{{#Article}}{{Article.content}}{{/Article}}</textarea>
     <input type="submit" value="등록">
 </form>
 <script>
