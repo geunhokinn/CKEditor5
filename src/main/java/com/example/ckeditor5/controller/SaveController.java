@@ -4,6 +4,7 @@ import com.example.ckeditor5.dto.SaveDTO;
 import com.example.ckeditor5.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -18,5 +19,13 @@ public class SaveController {
         articleService.saveArticle(saveDTO);
 
         return "redirect:/";
+    }
+
+    @PostMapping("/save/{id}")
+    public String updateLogic(SaveDTO saveDTO, @PathVariable Long id) {
+
+        articleService.updateArticle(saveDTO, id);
+
+        return "redirect:/article/" + id;
     }
 }
