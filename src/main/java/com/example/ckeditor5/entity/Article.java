@@ -1,10 +1,7 @@
 package com.example.ckeditor5.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
 @Entity
@@ -32,5 +29,10 @@ public class Article {
                 .title(title)
                 .content(content)
                 .build();
+    }
+
+    public void assignArticle(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }
